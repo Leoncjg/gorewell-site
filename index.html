@@ -7,7 +7,7 @@
   <meta name="description" content="Gorewell Ltd is a UK-based distributor buying and selling globally. We connect markets, move goods efficiently, and build trusted partnerships worldwide.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gorewell Ltd — Smart Distribution. Global Connections.">
-  <meta property="og:description" content="UK-based global distributor. Sourcing, procurement, international distribution and global partnerships.">
+  <meta property="og:description" content="UK-based global distributor. Sourcing, procurement, wholesale supply, international distribution and global partnerships.">
   <meta property="og:image" content="assets/gorewell-logo-primary.png">
   <link rel="icon" type="image/svg+xml" href="assets/gorewell-logo-icon-dark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +27,10 @@
         <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="about.html">About Us</a>
         <a href="services.html">Services</a>
+        <a href="wholesale.html">Wholesale</a>
         <a href="global-network.html">Global Network</a>
         <a href="team.html">Team</a>
-        <a href="news.html">News</a>
+        <a href="faq.html">FAQ</a>
         <a href="contact.html" class="btn btn-teal mobile-cta">Contact Us</a>
       </nav>
       <a class="btn btn-teal nav-cta" href="contact.html">Contact Us</a>
@@ -45,9 +46,13 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
+          <span class="kicker">UK-Based Global Distributor</span>
           <h1>Smart Distribution. <span class="accent">Global Connections.</span></h1>
           <p>Gorewell Ltd is a UK-based distributor buying and selling globally. We connect markets, move goods efficiently, and build trusted partnerships worldwide.</p>
-          <a class="btn btn-teal" href="contact.html">Get in Touch &rarr;</a>
+          <div class="hero-ctas">
+            <a class="btn btn-teal" href="contact.html">Get in Touch &rarr;</a>
+            <a class="btn btn-ghost" href="wholesale.html">Wholesale Supply</a>
+          </div>
         </div>
         <div class="dotmap-wrap">
           <svg class="dotmap" data-arcs="true" role="img" aria-label="World map showing Gorewell's global connections from the UK"></svg>
@@ -56,39 +61,46 @@
     </section>
 
     <!-- Services row -->
-    <section class="services">
-      <div class="container services-grid">
-        <div class="service">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.6" y2="15.6"/></svg>
-          </div>
-          <h3>Sourcing</h3>
-          <p>We identify quality products from trusted suppliers across the globe.</p>
-          <a class="more" href="services.html">Learn More &rarr;</a>
+    <section class="services section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">What We Do</span>
+          <h2>End-to-end distribution, handled properly</h2>
+          <p>From first enquiry to final delivery, one accountable partner across the whole supply chain.</p>
         </div>
-        <div class="service">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5"/><path d="m9 13 2 2 4-4"/></svg>
+        <div class="services-grid">
+          <div class="service" data-reveal>
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.6" y2="15.6"/></svg>
+            </div>
+            <h3>Sourcing</h3>
+            <p>We identify quality products from trusted suppliers across the globe.</p>
+            <a class="more" href="services.html">Learn More &rarr;</a>
           </div>
-          <h3>Procurement</h3>
-          <p>Smart procurement solutions that ensure quality, value and compliance.</p>
-          <a class="more" href="services.html">Learn More &rarr;</a>
-        </div>
-        <div class="service">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg>
+          <div class="service" data-reveal>
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5"/><path d="m9 13 2 2 4-4"/></svg>
+            </div>
+            <h3>Procurement</h3>
+            <p>Smart procurement solutions that ensure quality, value and compliance.</p>
+            <a class="more" href="services.html">Learn More &rarr;</a>
           </div>
-          <h3>International Distribution</h3>
-          <p>Efficient logistics and distribution networks that deliver on time, every time.</p>
-          <a class="more" href="services.html">Learn More &rarr;</a>
-        </div>
-        <div class="service">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3.2"/><circle cx="16" cy="9.5" r="2.6"/><path d="M3.5 19c.6-3 2.6-4.7 5-4.7s4.4 1.7 5 4.7"/><path d="M14.5 18.5c.5-2.3 2-3.6 3.8-3.6 1.2 0 2.3.6 3 1.7"/></svg>
+          <div class="service" data-reveal>
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg>
+            </div>
+            <h3>International Distribution</h3>
+            <p>Efficient logistics and distribution networks that deliver on time, every time.</p>
+            <a class="more" href="services.html">Learn More &rarr;</a>
           </div>
-          <h3>Global Partnerships</h3>
-          <p>Long-term relationships built on trust, transparency and results.</p>
-          <a class="more" href="services.html">Learn More &rarr;</a>
+          <div class="service" data-reveal>
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3.2"/><circle cx="16" cy="9.5" r="2.6"/><path d="M3.5 19c.6-3 2.6-4.7 5-4.7s4.4 1.7 5 4.7"/><path d="M14.5 18.5c.5-2.3 2-3.6 3.8-3.6 1.2 0 2.3.6 3 1.7"/></svg>
+            </div>
+            <h3>Global Partnerships</h3>
+            <p>Long-term relationships built on trust, transparency and results.</p>
+            <a class="more" href="services.html">Learn More &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -125,9 +137,10 @@
     </section>
 
     <!-- About band -->
-    <section class="about">
+    <section class="about section">
       <div class="container about-grid">
-        <div>
+        <div data-reveal>
+          <span class="kicker">Why Gorewell</span>
           <h2>Your Global Distribution Partner</h2>
           <p>Gorewell Ltd connects quality suppliers with markets worldwide. From sourcing to final delivery, we manage every step with integrity, efficiency and a commitment to long-term success.</p>
           <ul class="ticks">
@@ -137,10 +150,21 @@
             <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg></span>Partnerships built on trust and results</li>
           </ul>
         </div>
-        <div class="map-card">
+        <div class="map-card" data-reveal>
           <svg class="dotmap" data-arcs="true" aria-hidden="true"></svg>
           <div class="caption">UK Based. Globally Connected.</div>
         </div>
+      </div>
+    </section>
+
+    <!-- Wholesale strip -->
+    <section class="teal-strip">
+      <div class="container strip-inner">
+        <div>
+          <h2>Buying at volume?</h2>
+          <p>Structured wholesale supply with reliable dispatch and replenishment cycles.</p>
+        </div>
+        <a class="btn btn-outline-white" href="wholesale.html">Explore Wholesale &rarr;</a>
       </div>
     </section>
 
@@ -155,22 +179,29 @@
             <span class="brand-name">GOREWELL<span class="ltd">LTD</span></span>
           </a>
           <p class="tagline">Smart Distribution. Global Connections.</p>
-          <p>
-            <a href="mailto:gorewelllimited@gmail.com">gorewelllimited@gmail.com</a> &middot;
-            <a href="tel:+447789767374">+44 (0)7789 767374</a> &middot;
-            <a href="https://www.gorewell.co.uk">www.gorewell.co.uk</a>
-          </p>
+          <a class="contact-line" href="mailto:gorewelllimited@gmail.com">gorewelllimited@gmail.com</a>
+          <a class="contact-line" href="tel:+447789767374">+44 (0)7789 767374</a>
+          <a class="contact-line" href="https://www.gorewell.co.uk">www.gorewell.co.uk</a>
         </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="services.html">Services</a>
-          <a href="global-network.html">Global Network</a>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <a href="about.html">About Us</a>
           <a href="team.html">Team</a>
           <a href="news.html">News</a>
           <a href="contact.html">Contact</a>
-        </nav>
+        </div>
+        <div class="footer-col">
+          <h3>Trade</h3>
+          <a href="services.html">Services</a>
+          <a href="wholesale.html">Wholesale</a>
+          <a href="global-network.html">Global Network</a>
+          <a href="industries.html">Industries</a>
+          <a href="faq.html">FAQ</a>
+        </div>
       </div>
       <div class="footer-bottom">
-        &copy; 2026 Gorewell Ltd. Registered in England &amp; Wales. All rights reserved.
+        <span>&copy; 2026 Gorewell Ltd. Registered in England &amp; Wales. All rights reserved.</span>
+        <span>Smart Distribution. Global Connections.</span>
       </div>
     </div>
   </footer>

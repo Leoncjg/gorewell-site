@@ -184,6 +184,24 @@
     }
   }
 
+  /* ---------- Scroll reveal ---------- */
+  var reveals = document.querySelectorAll("[data-reveal]");
+  if (reveals.length) {
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      reveals.forEach(function (el) { el.classList.add("revealed"); });
+    } else {
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            rio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function (el) { rio.observe(el); });
+    }
+  }
+
   /* ---------- Contact form (mailto fallback) ---------- */
   var form = document.getElementById("contactForm");
   if (form) {
