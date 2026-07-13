@@ -122,16 +122,40 @@
       var mx = (o[0] + t[0]) / 2;
       var my = (o[1] + t[1]) / 2;
       var dist = Math.hypot(t[0] - o[0], t[1] - o[1]);
-      var path = el("path", {
-        class: "arc",
-        d: "M " + o[0] + " " + o[1] +
-           " Q " + mx + " " + Math.max(6, my - (dist * 0.32 + 22)) +
-           " " + t[0] + " " + t[1]
-      });
+      var d = "M " + o[0] + " " + o[1] +
+              " Q " + mx + " " + Math.max(6, my - (dist * 0.32 + 22)) +
+              " " + t[0] + " " + t[1];
+      var path = el("path", { class: "arc", d: d });
       svg.appendChild(path);
       var len = path.getTotalLength();
       path.style.setProperty("--len", len);
-      if (!reducedMotion) path.style.animationDelay = (0.25 + i * 0.28) + "s";
+      if (!reducedMotion) {
+        path.style.animationDelay = (0.25 + i * 0.28) + "s";
+        /* "Shipment" dot travelling along the arc (SMIL, loops forever) */
+        var packet = el("circle", { class: "packet", r: 2.6 });
+        var motion = el("animateMotion", {
+          dur: (3.6 + i * 0.5) + "s",
+          begin: (0.6 + i * 0.28) + "s",
+          repeatCount: "indefinite",
+          path: d,
+          calcMode: "spline",
+          keySplines: "0.4 0 0.6 1",
+          keyTimes: "0;1",
+          keyPoints: "0;1"
+        });
+        var fade = el("animate", {
+          attributeName: "opacity",
+          values: "0;1;1;0",
+          keyTimes: "0;0.1;0.85;1",
+          dur: (3.6 + i * 0.5) + "s",
+          begin: (0.6 + i * 0.28) + "s",
+          repeatCount: "indefinite"
+        });
+        packet.setAttribute("opacity", "0");
+        packet.appendChild(motion);
+        packet.appendChild(fade);
+        svg.appendChild(packet);
+      }
 
       var ring = el("circle", { class: "hub-ring", cx: t[0], cy: t[1], r: 7 });
       if (!reducedMotion) ring.style.animationDelay = (i * 0.45) + "s";
@@ -184,12 +208,17 @@
     }
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- Scroll reveal (staggered per sibling group) ---------- */
   var reveals = document.querySelectorAll("[data-reveal]");
   if (reveals.length) {
     if (reducedMotion || !("IntersectionObserver" in window)) {
       reveals.forEach(function (el) { el.classList.add("revealed"); });
     } else {
+      reveals.forEach(function (el) {
+        var siblings = el.parentElement.querySelectorAll(":scope > [data-reveal]");
+        var idx = Array.prototype.indexOf.call(siblings, el);
+        if (idx > 0) el.style.setProperty("--reveal-delay", (idx * 0.09) + "s");
+      });
       var rio = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -201,6 +230,51 @@
       reveals.forEach(function (el) { rio.observe(el); });
     }
   }
+
+  /* ---------- Scroll progress bar ---------- */
+  if (header && !reducedMotion) {
+    var bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    header.appendChild(bar);
+    var barTick = false;
+    var updateBar = function () {
+      barTick = false;
+      var max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+    };
+    window.addEventListener("scroll", function () {
+      if (!barTick) { barTick = true; requestAnimationFrame(updateBar); }
+    }, { passive: true });
+    updateBar();
+  }
+
+  /* ---------- FAQ smooth open/close ---------- */
+  document.querySelectorAll("details.faq-item").forEach(function (item) {
+    var summary = item.querySelector("summary");
+    var answer = item.querySelector(".faq-a");
+    if (!summary || !answer || reducedMotion || !answer.animate) return;
+    answer.style.overflow = "hidden";
+    var animating = false;
+    summary.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (animating) return;
+      animating = true;
+      var openKF = { height: "0px", paddingBottom: "0px", opacity: 0 };
+      if (item.open) {
+        var closedKF = { height: answer.offsetHeight + "px", paddingBottom: "20px", opacity: 1 };
+        var closing = answer.animate([closedKF, openKF], { duration: 260, easing: "ease" });
+        closing.onfinish = function () { item.open = false; animating = false; };
+      } else {
+        item.open = true;
+        var h = answer.offsetHeight;
+        var opening = answer.animate(
+          [openKF, { height: h + "px", paddingBottom: "20px", opacity: 1 }],
+          { duration: 300, easing: "ease" }
+        );
+        opening.onfinish = function () { animating = false; };
+      }
+    });
+  });
 
   /* ---------- Contact form (mailto fallback) ---------- */
   var form = document.getElementById("contactForm");
