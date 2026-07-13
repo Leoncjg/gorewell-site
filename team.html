@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Team — Gorewell Ltd</title>
+  <meta name="description" content="Meet the people behind Gorewell Ltd's global distribution network. Smart Distribution. Global Connections.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Meet the Team — Gorewell Ltd">
+  <meta property="og:description" content="The people behind Gorewell's global network.">
+  <meta property="og:image" content="assets/gorewell-logo-primary.png">
+  <link rel="icon" type="image/svg+xml" href="assets/gorewell-logo-icon-dark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Gorewell Ltd home">
+        <img src="assets/gorewell-logo-icon.svg" alt="" width="40" height="40">
+        <span class="brand-name">GOREWELL<span class="ltd">LTD</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="global-network.html">Global Network</a>
+        <a href="team.html" class="active" aria-current="page">Team</a>
+        <a href="news.html">News</a>
+        <a href="contact.html" class="btn btn-teal mobile-cta">Contact Us</a>
+      </nav>
+      <a class="btn btn-teal nav-cta" href="contact.html">Contact Us</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-head">
+      <div class="container page-head-grid">
+        <div>
+          <h1>Meet the <span class="accent">Team</span></h1>
+          <p>The people behind Gorewell's global network.</p>
+        </div>
+        <div class="dotmap-wrap">
+          <svg class="dotmap" aria-hidden="true"></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="container">
+        <div class="team-grid" id="teamGrid"></div>
+      </div>
+    </section>
+
+    <section class="teal-strip">
+      <div class="container strip-inner">
+        <h2>Want to join the Gorewell team?</h2>
+        <a class="btn btn-outline-white" href="contact.html">Get in Touch &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Gorewell Ltd home">
+            <img src="assets/gorewell-logo-icon-dark.svg" alt="" width="40" height="40">
+            <span class="brand-name">GOREWELL<span class="ltd">LTD</span></span>
+          </a>
+          <p class="tagline">Smart Distribution. Global Connections.</p>
+          <p>
+            <a href="mailto:gorewelllimited@gmail.com">gorewelllimited@gmail.com</a> &middot;
+            <a href="tel:+447789767374">+44 (0)7789 767374</a> &middot;
+            <a href="https://www.gorewell.co.uk">www.gorewell.co.uk</a>
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="services.html">Services</a>
+          <a href="global-network.html">Global Network</a>
+          <a href="team.html">Team</a>
+          <a href="news.html">News</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Gorewell Ltd. Registered in England &amp; Wales. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Add new team members here — the grid renders from this array. */
+    var MEMBERS = [
+      {
+        name: "Leon Gore",
+        role: "Managing Director",
+        bio: "Founded Gorewell to connect quality suppliers with markets worldwide.",
+        email: "gorewelllimited@gmail.com",
+        linkedin: ""
+      }
+    ];
+
+    (function () {
+      var grid = document.getElementById("teamGrid");
+      if (MEMBERS.length === 1) grid.classList.add("single");
+
+      var esc = function (s) {
+        return String(s).replace(/[&<>"']/g, function (ch) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+        });
+      };
+      var initials = function (name) {
+        return name.split(/\s+/).map(function (w) { return w.charAt(0); }).join("").slice(0, 2).toUpperCase();
+      };
+
+      var mailIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>';
+      var linkedinIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg>';
+
+      grid.innerHTML = MEMBERS.map(function (m) {
+        var links = "";
+        if (m.email) links += '<a href="mailto:' + esc(m.email) + '" aria-label="Email ' + esc(m.name) + '">' + mailIcon + "</a>";
+        if (m.linkedin) links += '<a href="' + esc(m.linkedin) + '" target="_blank" rel="noopener" aria-label="' + esc(m.name) + ' on LinkedIn">' + linkedinIcon + "</a>";
+        return (
+          '<article class="team-card">' +
+            '<div class="avatar" aria-hidden="true">' + esc(initials(m.name)) + "</div>" +
+            "<h3>" + esc(m.name) + "</h3>" +
+            '<div class="role">' + esc(m.role) + "</div>" +
+            '<p class="bio">' + esc(m.bio) + "</p>" +
+            '<div class="team-links">' + links + "</div>" +
+          "</article>"
+        );
+      }).join("");
+    })();
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
