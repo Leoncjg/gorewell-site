@@ -843,6 +843,7 @@ a:hover { color: var(--teal-dark); }
   margin-bottom: 8px;
 }
 .field input,
+.field select,
 .field textarea {
   width: 100%;
   font-family: var(--font);
@@ -854,7 +855,9 @@ a:hover { color: var(--teal-dark); }
   padding: 13px 15px;
   transition: border-color .2s ease;
 }
+.field select { cursor: pointer; }
 .field input:focus,
+.field select:focus,
 .field textarea:focus {
   outline: none;
   border-color: var(--teal);

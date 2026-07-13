@@ -281,7 +281,9 @@
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var get = function (id) { return (document.getElementById(id).value || "").trim(); };
+      var get = function (id) { var el = document.getElementById(id); return el ? (el.value || "").trim() : ""; };
+      /* Sales handles orders, wholesale & price lists; Info handles everything else */
+      var recipient = get("cf-topic") === "sales" ? "sales@gorewell.com" : "info@gorewell.com";
       var subject = "Website enquiry from " + (get("cf-name") || "the Gorewell website");
       var body =
         "Name: " + get("cf-name") + "\n" +
@@ -289,7 +291,7 @@
         "Email: " + get("cf-email") + "\n\n" +
         get("cf-message");
       window.location.href =
-        "mailto:gorewelllimited@gmail.com" +
+        "mailto:" + recipient +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
     });
